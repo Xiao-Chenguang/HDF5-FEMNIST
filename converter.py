@@ -9,6 +9,7 @@ def convert_to_hdf5(source, target):
     file = h5py.File(target, "w")
 
     writers = sorted(os.listdir(source))
+    print('Convert images to HDF5 format...')
     for writer in tqdm(writers):
         writer_group = file.create_group(writer)
 
@@ -32,6 +33,6 @@ def convert_to_hdf5(source, target):
 
 
 if __name__ == "__main__":
-    source = "path_to_images_root"
-    target = "path_to_target.hdf5"
+    source = "data/write_digits"
+    target = "data/write_digits.hdf5"
     convert_to_hdf5(source, target)
