@@ -63,6 +63,9 @@ def main(root = 'data/', digits_only = False):
         # save gray image to target
         gray.save(target)
 
+if __name__ == '__main__':
+    main()
+
 
     # convert original image to vector of 28 * 28 = 784
     # same as in LEAF: https://github.com/TalwalkarLab/leaf/blob/master/data/femnist/preprocess/data_to_json.py
