@@ -1,4 +1,5 @@
 import os
+import sys
 import h5py
 import numpy as np
 from PIL import Image
@@ -37,6 +38,11 @@ def convert_to_hdf5(source, target):
 
 
 if __name__ == "__main__":
-    source = "data/write_digits"
-    target = "data/write_digits.hdf5"
+    if len(sys.argv) == 2:
+        char = sys.argv[1].lower() == 'true'
+    else:
+        char = False
+    scope = "digits" if char else "all"
+    source = f"data/write_{scope}"
+    target = f"data/write_{scope}.hdf5"
     convert_to_hdf5(source, target)
