@@ -4,8 +4,8 @@ from PIL import Image
 from tqdm import tqdm
 
 
-def main(root = 'data/', digits_only = False):
-    
+def main(root='data/', digits_only=False):
+
     size = (28, 28)
     split = 'write_digits' if digits_only else 'write_all'
 
@@ -15,7 +15,6 @@ def main(root = 'data/', digits_only = False):
         lowwer = [hex(i)[2:] for i in range(ord('a'), ord('z') + 1)]
 
         return digits if digits_only else digits + upper + lowwer
-
 
     # get the writer info from by_class
     df = pd.DataFrame(columns=['file', 'target', 'label'])
@@ -34,7 +33,6 @@ def main(root = 'data/', digits_only = False):
             df = pd.concat([df, temp_df], ignore_index=True)
     df = df[['file', 'source', 'target', 'writer', 'label']]
 
-
     writer_list = df['writer'].unique()
     label_list = df['label'].unique()
 
@@ -49,7 +47,6 @@ def main(root = 'data/', digits_only = False):
             if not os.path.exists(root + f'{split}/{writer}/{label}'):
                 os.makedirs(root + f'{split}/{writer}/{label}')
 
-
     print('Group images by writer...')
     for index, row in tqdm(df.iterrows(), total=df.shape[0]):
         source = root + row['source'] + row['file']
@@ -63,18 +60,18 @@ def main(root = 'data/', digits_only = False):
         # save gray image to target
         gray.save(target)
 
+
 if __name__ == '__main__':
     main()
 
+# convert original image to vector of 28 * 28 = 784
+# same as in LEAF: https://github.com/TalwalkarLab/leaf/blob/master/data/femnist/preprocess/data_to_json.py
+# line 62 - 68
 
-    # convert original image to vector of 28 * 28 = 784
-    # same as in LEAF: https://github.com/TalwalkarLab/leaf/blob/master/data/femnist/preprocess/data_to_json.py
-    # line 62 - 68
-
-    # img = Image.open(file_path)
-    # gray = img.convert('L')
-    # gray.thumbnail(size, Image.ANTIALIAS)
-    # arr = np.asarray(gray).copy()
-    # vec = arr.flatten()
-    # vec = vec / 255  # scale all pixel values to between 0 and 1
-    # vec = vec.tolist()
+# img = Image.open(file_path)
+# gray = img.convert('L')
+# gray.thumbnail(size, Image.ANTIALIAS)
+# arr = np.asarray(gray).copy()
+# vec = arr.flatten()
+# vec = vec / 255  # scale all pixel values to between 0 and 1
+# vec = vec.tolist()
