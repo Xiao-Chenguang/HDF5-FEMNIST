@@ -22,7 +22,7 @@ for label in range(30,40):
         temp_df['writer'] = temp_df['target'].apply(lambda x: x.split('/')[0])
         temp_df['target'] = temp_df.apply(lambda x: f'write_digits/{x["writer"]}/{x["label"]}/', axis=1)
         temp_df['source'] = f'by_class/{label}/hsf_{group}/'
-        df = df.append(temp_df, ignore_index=True)
+        df = pd.concat([df, temp_df], ignore_index=True)
 df = df[['file', 'source', 'target', 'writer', 'label']]
 
 
