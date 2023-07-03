@@ -1,3 +1,17 @@
+#!/bin/bash
+
+while getopts ":d:" opt; do
+  case $opt in
+    d) digits_only="$OPTARG"
+    ;;
+    \?) echo "Invalid option -$OPTARG" >&2
+    ;;
+  esac
+done
+
+digits_only=${digits_only:-False}
+echo "extract digits_only: $digits_only";
+
 # cd current directory
 cd "$(dirname "$0")"
 echo "Current working directory: $(pwd)"
@@ -10,6 +24,6 @@ unzip -q data/by_class.zip -d data/
 
 rm data/by_class.zip
 
-python group_by_writer.py
+python group_by_writer.py $digits_only
 
-python converter.py
+python converter.py $digits_only
