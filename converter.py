@@ -6,6 +6,10 @@ from tqdm import tqdm
 
 
 def convert_to_hdf5(source, target):
+    class_list = ([hex(i)[2:] for i in range(ord('0'), ord('9') + 1)]
+                  + [hex(i)[2:] for i in range(ord('A'), ord('Z') + 1)]
+                  + [hex(i)[2:] for i in range(ord('a'), ord('z') + 1)])
+    class_id = {c: i for i, c in enumerate(class_list)}
     file = h5py.File(target, "w")
 
     writers = sorted(os.listdir(source))
@@ -23,7 +27,7 @@ def convert_to_hdf5(source, target):
                 image = Image.open(image_path).convert("L")
                 image_np = np.array(image)
                 imgs.append(image_np)
-            labels.extend([int(_class)] * len(image_files))
+            labels.extend([class_id[_class]] * len(image_files))
 
         imgs = np.stack(imgs, axis=0)
         labels = np.array(labels)
