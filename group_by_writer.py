@@ -1,4 +1,5 @@
 import os
+import sys
 import pandas as pd
 from PIL import Image
 from tqdm import tqdm
@@ -62,7 +63,10 @@ def main(root='data/', digits_only=False):
 
 
 if __name__ == '__main__':
-    main()
+    if len(sys.argv) == 2:
+        main(digits_only=sys.argv[1].lower()=='true')
+    else:
+        main()
 
 # convert original image to vector of 28 * 28 = 784
 # same as in LEAF: https://github.com/TalwalkarLab/leaf/blob/master/data/femnist/preprocess/data_to_json.py
