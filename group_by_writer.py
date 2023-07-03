@@ -7,12 +7,19 @@ from tqdm import tqdm
 root = 'data/'
 size = (28, 28)
 
+def class_list(digits_only=True):
+    digits = [hex(i)[2:] for i in range(ord('0'), ord('9') + 1)]
+    upper = [hex(i)[2:] for i in range(ord('A'), ord('Z') + 1)]
+    lowwer = [hex(i)[2:] for i in range(ord('a'), ord('z') + 1)]
+
+    return digits if digits_only else digits + upper + lowwer
+
 
 # get the writer info from by_class
 df = pd.DataFrame(columns=['file', 'target', 'label'])
 
 # get the writer id for each image
-for label in range(30,40):
+for label in class_list(digits_only=True):
     for group in range(8):
         if not os.path.exists(f'{root}by_class/{label}/hsf_{group}.mit'):
             continue
