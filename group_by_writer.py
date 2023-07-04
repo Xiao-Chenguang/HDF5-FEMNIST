@@ -18,7 +18,7 @@ def main(root='data/', digits_only=False):
         return digits if digits_only else digits + upper + lowwer
 
     # get the writer info from by_class
-    df = pd.DataFrame(columns=['file', 'target', 'label'])
+    df = pd.DataFrame(columns=['file', 'target', 'label', 'writer', 'source'])
 
     # get the writer id for each image
     for label in class_list(digits_only=digits_only):
