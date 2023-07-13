@@ -57,6 +57,27 @@ To use the datasets, just clone the repo and run the following command:
 
 You can specify the mode of the dataset by adding the argument `-d` followed by `True` (default, digits only mode) or `False` (all characters mode).
 
+After converting the dataset to HDF5 format, you can use the following code to load the dataset:
+```python
+import h5py
+
+# load the dataset
+dataset = h5py.File('HDF5-FEMNIST/f0000_14', 'r')
+
+# get the key of each writer datasets
+writers = sorted(dataset.keys())
+
+# get the images and labels of the first writer as numpy array
+images = dataset[writers[0]]['images']
+labels = dataset[writers[0]]['labels']
+
+# transform the images and labels to torch tensor
+images_tensor = torch.from_numpy(images)
+labels_tensor = torch.from_numpy(labels)
+```
+
+We also provide a [demo notebook](./demo.ipynb) to explore properties of the dataset. Feel free to play with it.
+
 ## Requirements
 python with the following packages:
 - h5py
