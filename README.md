@@ -62,7 +62,7 @@ After converting the dataset to HDF5 format, you can use the following code to l
 import h5py
 
 # load the dataset
-dataset = h5py.File('HDF5-FEMNIST/f0000_14', 'r')
+dataset = h5py.File('path_to_your_femnist.hdf5', 'r')
 
 # get the key of each writer datasets
 writers = sorted(dataset.keys())
