@@ -25,6 +25,7 @@ HDF5-FEMNIST
 │   ├── images
 │   │   ├── n4099 * 28 * 28
 │   └── labels
+│       ├── n4099 * 1
 ```
 
 In digits only mode, the labels are in the range of 0 to 9. In full mode, the labels are in the range of 0 to 61. The mapping from the label to the character is in the following table:
