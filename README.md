@@ -1,5 +1,9 @@
 # HDF5-FEMNIST
 
+[![MacOS](https://img.shields.io/badge/platform-macOS-blue)](https://www.apple.com/macos/)
+[![Linux](https://img.shields.io/badge/platform-Linux-blue)](https://www.linux.org/)
+[![PyTorch](https://img.shields.io/badge/framework-PyTorch-orange)](https://pytorch.org/)
+
 HDF5-FEMNIST enables easy access and fast loading to the FEMNIST dataset from [LEAF](https://leaf.cmu.edu) with the help of [HDF5](https://github.com/h5py/h5py).
 
 There are currently limited public accessable federated datasets for research purpose. FEMNIST is one of the most popular and early datasets implemented under LEAF framework which is rarely used by majorities of researchers nowadays. [Tensorflow-Federated](https://www.tensorflow.org/federated/api_docs/python/tff/simulation/datasets/emnist/load_data) has a buildin version of FEMNIST. But for the TyTorch users, there are now easy access to the FEMNIST datasets.
