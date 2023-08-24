@@ -18,7 +18,7 @@ echo "Current working directory: $(pwd)"
 
 mkdir data
 
-wget https://s3.amazonaws.com/nist-srd/SD19/by_class.zip -O data/by_class.zip
+wget https://s3.amazonaws.com/nist-srd/SD19/by_class.zip -O data/by_class.zip || curl https://s3.amazonaws.com/nist-srd/SD19/by_class.zip -o data/by_class.zip
 
 unzip -q data/by_class.zip -d data/
 
