@@ -9,7 +9,7 @@ while getopts ":d:" opt; do
   esac
 done
 
-digits_only=${digits_only:-False}
+digits_only=${digits_only:-True}
 echo "extract digits_only: $digits_only";
 
 # cd current directory
