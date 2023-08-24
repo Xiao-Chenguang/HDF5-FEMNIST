@@ -67,7 +67,7 @@ images_tensor = torch.from_numpy(images)
 labels_tensor = torch.from_numpy(labels)
 ```
 
-We also provide a [demo notebook](./demo.ipynb) to explore properties of the dataset. Feel free to play with it.
+A [demo notebook](./demo.ipynb) is provided to explore properties of the dataset. Feel free to play with it.
 
 ## Requirements
 python with the following packages:
