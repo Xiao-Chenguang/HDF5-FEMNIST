@@ -61,7 +61,7 @@ def main(root="data/", digits_only=False):
         # read image
         img = Image.open(source)
         gray = img.convert("L")
-        gray.thumbnail(size, Image.ANTIALIAS)
+        gray.thumbnail(size, Image.Resampling.LANCZOS)
         # save gray image to target
         gray.save(target)
 
