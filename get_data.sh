@@ -16,7 +16,7 @@ echo "extract digits_only: $digits_only";
 cd "$(dirname "$0")"
 echo "Current working directory: $(pwd)"
 
-mkdir data
+mkdir -p data
 
 wget https://s3.amazonaws.com/nist-srd/SD19/by_class.zip -O data/by_class.zip || curl https://s3.amazonaws.com/nist-srd/SD19/by_class.zip -o data/by_class.zip
 
