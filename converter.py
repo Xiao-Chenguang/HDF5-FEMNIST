@@ -1,5 +1,6 @@
 import os
 import sys
+
 import h5py
 import numpy as np
 from PIL import Image
@@ -7,14 +8,16 @@ from tqdm import tqdm
 
 
 def convert_to_hdf5(source, target):
-    class_list = ([hex(i)[2:] for i in range(ord('0'), ord('9') + 1)]
-                  + [hex(i)[2:] for i in range(ord('A'), ord('Z') + 1)]
-                  + [hex(i)[2:] for i in range(ord('a'), ord('z') + 1)])
+    class_list = (
+        [hex(i)[2:] for i in range(ord("0"), ord("9") + 1)]
+        + [hex(i)[2:] for i in range(ord("A"), ord("Z") + 1)]
+        + [hex(i)[2:] for i in range(ord("a"), ord("z") + 1)]
+    )
     class_id = {c: i for i, c in enumerate(class_list)}
     file = h5py.File(target, "w")
 
     writers = sorted(os.listdir(source))
-    print('Convert images to HDF5 format...')
+    print("Convert images to HDF5 format...")
     for writer in tqdm(writers):
         writer_group = file.create_group(writer)
 
@@ -39,7 +42,7 @@ def convert_to_hdf5(source, target):
 
 if __name__ == "__main__":
     if len(sys.argv) == 2:
-        char = sys.argv[1].lower() == 'true'
+        char = sys.argv[1].lower() == "true"
     else:
         char = False
     scope = "digits" if char else "all"
