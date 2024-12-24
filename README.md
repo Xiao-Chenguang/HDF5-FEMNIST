@@ -46,6 +46,16 @@ To use the datasets, just clone the repo and run the following command:
 ./get_data.sh
 ```
 
+The conversion takes about 2 hours and 12 minutes on linux machine with Intel® Xeon® Platinum 8360Y, if you just want to use the dataset, you can download the [compressed version](./write_digits.hdf5.gz) directly.
+```bash
+wget https://github.com/Xiao-Chenguang/HDF5-FEMNIST/raw/refs/heads/main/write_digits.hdf5.gz
+
+gunzip write_digits.hdf5.gz
+md5sum write_digits.hdf5
+```
+
+make sure the md5sum is `a4a7beee023c2148ca9e4d6d4690e3ce  write_digits.hdf5`
+
 You can specify the mode of the dataset by adding the argument `-d` followed by `True` (default, digits only mode) or `False` (all characters mode).
 
 After converting the dataset to HDF5 format, you can use the following code to load the dataset:
